@@ -1,0 +1,13 @@
+
+/* Feature Request Form */
+.form {
+  margin: 2% auto;
+  padding: 1em;
+  width: 80%;
+  color: #aaa;
+  border: .1em solid #ddd;
+  border-radius: 4px;
+  -moz-box-shadow: 0 0 3px #ccc;
+-webkit-box-shadow: 0 0 3px #ccc;
+box-shadow: 0 0 3px #ccc;
+}

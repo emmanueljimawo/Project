@@ -1,0 +1,126 @@
+{% extends 'layout.html' %}
+{% block title %}Request{% endblock %}
+{% block content %}
+
+<!-- Form -->
+<form class="form" action="" method="POST">
+  {{ form.hidden_tag() }}
+  <legend class="border-bottom mb-4"><span style="color:red;">Feature Request Form</span></legend>
+  <div class="form-group">
+    {{form.title.label()}}
+    {% if form.title.errors %}
+    {{ form.title(class="form-control is-invalid") }}
+    <div class="invalid-feedback">
+      {% for error in form.title.errors %}
+      <span>{{ error }}</span>
+      {% endfor %}
+    </div>
+    {% else %}
+    {{form.title(class="form-control")}}
+    {% endif %}
+  </div>
+  <div class="mb-3">
+    {{form.description.label()}}
+    {% if form.description.errors %}
+    {{form.description(cols="40", rows="8", class="form-control is-invalid")}}
+    <div class="invalid-feedback">
+      {% for error in form.description.errors %}
+      <span>{{ error }}</span>
+      {% endfor %}
+    </div>
+    {% else %}
+    {{form.description(cols="40", rows="8" ,class="form-control")}}
+    {% endif %}
+
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-8">
+      {{form.client.label()}}
+      {% if form.client.errors %}
+      {{form.client(class="form-control is-invalid")}}
+      <div class="invalid-feedback">
+        {% for error in form.client.errors %}
+        <span>{{ error }}</span>
+        {% endfor %}
+      </div>
+      {% else %}
+      {{form.client(class="form-control")}}
+      {% endif %}
+
+    </div>
+    <div class="form-group col-md-4">
+      {{form.client_priority.label()}}
+      {% if form.client_priority.errors %}
+      {{form.client_priority(class="form-control is-invalid", type="number")}}
+      <div class="invalid-feedback">
+        {% for error in form.client_priority.errors %}
+        <span>{{ error }}</span>
+        {% endfor %}
+      </div>
+      {% else %}
+      {{form.client_priority(class="form-control", type="number")}}
+      {% endif %}
+    </div>
+  </div>
+  <div class="form-group">
+    {{form.target_date.label()}}
+    {% if form.target_date.errors %}
+    {{form.target_date(class="form-control is-invalid", type="date")}}
+    <div class="invalid-feedback">
+      {% for error in form.target_date.errors %}
+      <span>{{ error }}</span>
+      {% endfor %}
+    </div>
+    {% else %}
+    {{form.target_date(class="form-control", type="date")}}
+    {% endif %}
+
+  </div>
+  <div class="form-group">
+    {{form.product_area.label()}}
+    {% if form.product_area.errors %}
+    {{form.product_area(class="form-control is-invalid")}}
+    <div class="invalid-feedback">
+      {% for error in form.product_area.errors %}
+      <span>{{ error }}</span>
+      {% endfor %}
+    </div>
+    {% else %}
+    {{form.product_area(class="form-control")}}
+    {% endif %}
+
+  </div>
+
+  <div class="mt-4">
+
+    {{form.submit(class="btn btn-info btn-sm", value="Update")}}
+    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal  ">Delete</button>
+
+  </div>
+  <small class="text-muted float-right ">
+    Author: {{request.author.username}}
+  </small>
+</form>
+
+<form class="" action="{{url_for('home.delete', featurerequest_id = request.id )}}" method="POST">
+  <!-- Modal -->
+  <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteModalLabel">You are going to Delete this forever !!</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <input class="btn btn-danger" type="submit" name="" value="Delete">
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+{% endblock %}

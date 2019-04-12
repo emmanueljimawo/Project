@@ -1,0 +1,13 @@
+{% extends "layout_2.html" %}
+{% block content %}
+    <div class="form-signin">
+        <h1>Oops. Page Not Found (404)</h1>
+        <p>That page does not exist. Please try a different location</p>
+
+        {% if current_user.is_authenticated %}
+        <a class="btn btn-outline-danger btn-sm" href="{{url_for('home.home')}}">Home</a>
+        {% else %}
+        <a class="btn btn-outline-danger btn-sm" href="{{url_for('users.login')}}">Login</a>
+        {% endif %}
+    </div>
+{% endblock content %}
