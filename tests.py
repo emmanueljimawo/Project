@@ -14,13 +14,15 @@ class BaseTestCase(TestCase):
 
     def create_app(self):
         app.config.from_object('config.TestConfig')
-
         return app
 
     def setUp(self):
         db.create_all()
-        db.session.add(FeatureRequest("Test post","This is a test. Only a test.","Client A", 1,datetime.utcnow(),"Billing", "emma"))
-        db.session.add(User("emma","ad@min.com","emma"))
+        request = FeatureRequest("Test request", "This is a test request",
+                                 "Client A", 1, datetime.utcnow(), "Billing", "stevejobs")
+        user = User("stevejobs", "stevejobs@iws.com", "stevejobs")
+        db.session.add(request)
+        db.session.add(user)
         db.session.commit()
 
     def tearDown(self):
@@ -28,10 +30,10 @@ class BaseTestCase(TestCase):
         db.drop_all()
 
 
-class FlaskTestCase(BaseTestCase):
+class AppTestCase(BaseTestCase):
 
-    # Ensure that Flask was set up correctly
-    def test_index(self):
+    # Ensure that FlaskApp was set up correctly
+    def test_home(self):
         response = self.client.get('/login', content_type='html/text')
         self.assertEqual(response.status_code, 200)
 
@@ -40,14 +42,14 @@ class FlaskTestCase(BaseTestCase):
         response = self.client.get('/', follow_redirects=True)
         self.assertIn(b'Please log in to access this page', response.data)
 
-    # Ensure that posts show up on the main page
-    def test_title_show_up_on_main_page(self):
+    # Ensure that feature request title show up on the home page
+    def test_request_title_show_up_on_home_page(self):
         response = self.client.post(
             '/login',
-            data=dict(username="emma", password="emma"),
+            data=dict(username="stevejobs", password="stevejobs"),
             follow_redirects=True
         )
-        self.assertIn(b'Test post', response.data)
+        self.assertIn(b'Test request', response.data)
 
 
 class UserViewsTests(BaseTestCase):
@@ -62,11 +64,11 @@ class UserViewsTests(BaseTestCase):
         with self.client:
             response = self.client.post(
                 '/login',
-                data=dict(username="emma", password="emma"),
+                data=dict(username="stevejobs", password="stevejobs"),
                 follow_redirects=True
             )
             self.assertIn(b'Login successful', response.data)
-            self.assertTrue(current_user.username == "emma")
+            self.assertTrue(current_user.username == "stevejobs")
             self.assertTrue(current_user.is_active())
 
     # Ensure login behaves correctly with incorrect credentials
@@ -83,7 +85,7 @@ class UserViewsTests(BaseTestCase):
         with self.client:
             self.client.post(
                 '/login',
-                data=dict(username="emma", password="emma"),
+                data=dict(username="stevejobs", password="stevejobs"),
                 follow_redirects=True
             )
             response = self.client.get('/logout', follow_redirects=True)
@@ -94,7 +96,6 @@ class UserViewsTests(BaseTestCase):
     def test_logout_route_requires_login(self):
         response = self.client.get('/logout', follow_redirects=True)
         self.assertIn(b'Please log in to access this page', response.data)
-
 
 
 if __name__ == '__main__':
