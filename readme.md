@@ -29,7 +29,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-You need to have installed python 3.7+ running on your system.
+You need to have python 3.7+ running on your system.
 
 
 ### Installing
@@ -43,7 +43,10 @@ python run.py
 
 ## Running the tests
 
-Explain how to run the automated tests for this system
+```
+python tests.py
+
+```
 
 ### Break down into end to end tests
 

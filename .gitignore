@@ -1,4 +1,6 @@
 *.pyc
 .DS_Store
-blog
 *.db
+.bin
+.include
+.lib

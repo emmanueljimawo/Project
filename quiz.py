@@ -1,4 +1,5 @@
 '''
+
 from cryptography.fernet import fernet
 
 key = 'TluxwB3fV_GWuLkR1_BzGs1Zk90TYAuhNMZP_0q4WyM='
