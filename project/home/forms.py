@@ -1,9 +1,6 @@
-from datetime import date
 from flask_wtf import FlaskForm
 from wtforms import StringField, TextAreaField, IntegerField, DateField, SelectField, SubmitField
 from wtforms.validators import DataRequired, Length, NumberRange
-
-
 
 
 class FeatureRequestForm(FlaskForm):

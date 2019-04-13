@@ -40,7 +40,7 @@ class AppTestCase(BaseTestCase):
     # Ensure that main page requires user login
     def test_main_route_requires_login(self):
         response = self.client.get('/', follow_redirects=True)
-        self.assertIn(b'Please log in to access this page', response.data)
+        self.assertIn(b'Please sign in', response.data)
 
     # Ensure that feature request title show up on the home page
     def test_request_title_show_up_on_home_page(self):
@@ -89,13 +89,13 @@ class UserViewsTests(BaseTestCase):
                 follow_redirects=True
             )
             response = self.client.get('/logout', follow_redirects=True)
-            self.assertIn(b'You were logged out', response.data)
+            self.assertIn(b'Please sign in', response.data)
             self.assertFalse(current_user.is_active)
 
     # Ensure that logout page requires user login
     def test_logout_route_requires_login(self):
         response = self.client.get('/logout', follow_redirects=True)
-        self.assertIn(b'Please log in to access this page', response.data)
+        self.assertIn(b'Please sign in', response.data)
 
 
 if __name__ == '__main__':

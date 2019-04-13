@@ -1,7 +1,3 @@
-#################
-#### imports ####
-#################
-
 from datetime import datetime
 
 from flask import render_template, url_for, flash, redirect, request, abort, Blueprint
@@ -12,10 +8,7 @@ from project.models import FeatureRequest
 from project.home.forms import FeatureRequestForm
 
 
-################
-#### config ####
-################
-
+# config
 home_blueprint = Blueprint(
     'home', __name__,
     template_folder='templates'
@@ -31,9 +24,7 @@ def reorder_client_priority(client_input, client_priority_input):
             db.session.commit()
 
 
-################
-#### routes ####
-################
+# routes
 
 # use decorators to link the function to a url
 @home_blueprint.route('/', methods=['GET', 'POST'])
@@ -51,6 +42,7 @@ def home():
         flash('Your Feature Request has been Added!', 'success')
         return redirect(url_for('home.home'))
     return render_template('home.html', form=form, requests=requests_all, now=datetime.utcnow())
+
 
 @home_blueprint.route("/request/<int:featurerequest_id>", methods=['GET', 'POST'])
 @login_required
@@ -78,6 +70,7 @@ def detail(featurerequest_id):
     else:
         abort(403)
     return render_template('detail.html', form=form, request=request_detail, now=datetime.utcnow())
+
 
 @home_blueprint.route("/request/<int:featurerequest_id>/delete", methods=['POST'])
 @login_required
