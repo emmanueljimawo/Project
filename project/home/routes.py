@@ -36,7 +36,7 @@ def home():
     if form.validate_on_submit():
         reorder_client_priority(form.client.data, form.client_priority.data)
         request_new = FeatureRequest(title=form.title.data, description=form.description.data, client=form.client.data,
-                                     client_priority=form.client_priority.data, target_date=form.target_date.data, product_area=form.product_area.data, author=current_user.username)
+                                     client_priority=form.client_priority.data, target_date=form.target_date.data, product_area=form.product_area.data, author=current_user.id)
         db.session.add(request_new)
         db.session.commit()
         flash('Your Feature Request has been Added!', 'success')

@@ -15,7 +15,7 @@ class FeatureRequest(db.Model):
     client_priority = db.Column(db.Integer, nullable=False)
     target_date = db.Column(db.DateTime, nullable=False)
     product_area = db.Column(db.String(12), nullable=False)
-    author_id = db.Column(db.Integer, db.ForeignKey('users.username'))
+    author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
     def __init__(self, title, description, client,\
      client_priority, target_date, product_area, author):
@@ -37,9 +37,9 @@ class User(db.Model):
     __tablename__ = "users"
 
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String, nullable=False)
-    email = db.Column(db.String, nullable=False)
-    password = db.Column(db.String)
+    username = db.Column(db.String(25), unique=True, nullable=False)
+    email = db.Column(db.String(40), unique=True, nullable=False)
+    password = db.Column(db.Text)
     features = relationship("FeatureRequest", backref="author", lazy=True)
 
     def __init__(self, username, email, password):

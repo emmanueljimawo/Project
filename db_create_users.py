@@ -2,7 +2,7 @@ from project import db
 from project.models import User
 
 # create table
-db.create_all()
+# db.create_all()
 
 # insert data
 db.session.add(User("admin", "admin@iws.com", "admin"))
