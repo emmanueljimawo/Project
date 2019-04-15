@@ -27,7 +27,7 @@ def reorder_client_priority(client_input, client_priority_input):
 # routes
 
 # use decorators to link the function to a url
-@home_blueprint.route('/', methods=['GET', 'POST'])
+@home_blueprint.route('/home', methods=['GET', 'POST'])
 @login_required
 def home():
     requests_all = FeatureRequest.query.filter_by(

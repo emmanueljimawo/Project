@@ -15,7 +15,7 @@ users_blueprint = Blueprint(
 
 
 # routes
-@users_blueprint.route('/login', methods=['GET', 'POST'])
+@users_blueprint.route('/', methods=['GET', 'POST'])
 def login():
     error = None
     form = LoginForm(request.form)
@@ -40,4 +40,4 @@ def login():
 @login_required
 def logout():
     logout_user()
-    return redirect(url_for('home.home'))
+    return redirect(url_for('users.login'))

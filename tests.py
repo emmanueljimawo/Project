@@ -34,18 +34,18 @@ class AppTestCase(BaseTestCase):
 
     # Ensure that FlaskApp was set up correctly
     def test_home(self):
-        response = self.client.get('/login', content_type='html/text')
+        response = self.client.get('/', content_type='html/text')
         self.assertEqual(response.status_code, 200)
 
     # Ensure that main page requires user login
     def test_main_route_requires_login(self):
-        response = self.client.get('/', follow_redirects=True)
+        response = self.client.get('/home', follow_redirects=True)
         self.assertIn(b'Please sign in', response.data)
 
     # Ensure that feature request title show up on the home page
     def test_request_title_show_up_on_home_page(self):
         response = self.client.post(
-            '/login',
+            '/',
             data=dict(username="stevejobs", password="stevejobs"),
             follow_redirects=True
         )
@@ -56,14 +56,14 @@ class UserViewsTests(BaseTestCase):
 
     # Ensure that the login page loads correctly
     def test_login_page_loads(self):
-        response = self.client.get('/login')
+        response = self.client.get('/')
         self.assertIn(b'Please sign in', response.data)
 
     # Ensure login behaves correctly with correct credentials
     def test_correct_login(self):
         with self.client:
             response = self.client.post(
-                '/login',
+                '/',
                 data=dict(username="stevejobs", password="stevejobs"),
                 follow_redirects=True
             )
@@ -74,7 +74,7 @@ class UserViewsTests(BaseTestCase):
     # Ensure login behaves correctly with incorrect credentials
     def test_incorrect_login(self):
         response = self.client.post(
-            '/login',
+            '/',
             data=dict(username="wrong", password="wrong"),
             follow_redirects=True
         )
@@ -84,7 +84,7 @@ class UserViewsTests(BaseTestCase):
     def test_logout(self):
         with self.client:
             self.client.post(
-                '/login',
+                '/',
                 data=dict(username="stevejobs", password="stevejobs"),
                 follow_redirects=True
             )
