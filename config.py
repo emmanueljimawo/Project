@@ -21,10 +21,11 @@ class DevelopmentConfig(BaseConfig):
 
 class ProductionConfig(BaseConfig):
     DEBUG = False
-    DB_USERNAME = 'root'
-    DB_PASSWORD = 'test'
-    DATABASE_NAME = 'feature_request'
-    DB_HOST = 'mysql:3306'
-    DB_URI = "mysql+pymysql://%s:%s@%s/%s" % (DB_USERNAME, DB_PASSWORD, DB_HOST, DATABASE_NAME)
-    SQLALCHEMY_DATABASE_URI = DB_URI
+    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:test@localhost/feature_request'
+    #DB_USERNAME = 'root'
+    #DB_PASSWORD = 'test'
+    #DATABASE_NAME = 'feature_request'
+    #DB_HOST = 'localhost'
+    #DB_URI = "mysql+pymysql://%s:%s@%s/%s" % (DB_USERNAME, DB_PASSWORD, DB_HOST, DATABASE_NAME)
+    #SQLALCHEMY_DATABASE_URI = DB_URI
     SQLALCHEMY_TRACK_MODIFICATIONS = True
