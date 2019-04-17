@@ -18,11 +18,11 @@ class BaseTestCase(TestCase):
 
     def setUp(self):
         db.create_all()
-        request = FeatureRequest("Test request", "This is a test request",
-                                 "Client A", 1, datetime.utcnow(), "Billing", "stevejobs")
         user = User("stevejobs", "stevejobs@iws.com", "stevejobs")
-        db.session.add(request)
+        request = FeatureRequest("Test request", "This is a test request",
+                                 "Client A", 1, datetime.utcnow(), "Billing", "1")
         db.session.add(user)
+        db.session.add(request)
         db.session.commit()
 
     def tearDown(self):

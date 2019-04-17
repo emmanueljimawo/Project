@@ -38,13 +38,20 @@ You need to have python 3.7+ running on your system.
 <!-- git clone https://github.com/emmanueljimawo/Project.git -->
 pip install -r requirements.txt
 python db_create_users.py
-python run.py
+python manage.py runserver
 ```
 
 ## Running the tests
+To run tests
 
 ```
-python tests.py
+python manage.py test
+
+```
+To get a full coverage of the test carried out
+
+```
+python manage.py cov
 
 ```
 
@@ -67,9 +74,9 @@ Give an example
 ## Deployment
 
 
-<!-- The app is hosted live at [Feature Request App Demo](http://featuredemoapp.us-west-1.elasticbeanstalk.com/) thanks to AWS Elastic Beanstalk and RDS, but if you want a local copy, continue reading.
+The app is hosted live at [Feature Request App Demo](http://featuredemoapp.us-west-1.elasticbeanstalk.com/) thanks to AWS Elastic Beanstalk and RDS, but if you want a local copy, continue reading.
 
-These instructions will give you a local repository on your machine which you can then run and use. These steps assumes you have pip installed already. -->
+These instructions will give you a local repository on your machine which you can then run and use. These steps assumes you have pip installed already.
 
 
 ## Versioning
