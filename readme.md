@@ -54,7 +54,7 @@ python manage.py test
 
 ### Break down into end to end tests
 
-These tests tries to cover the total functionality of this App.
+These tests tries to cover the total functionality of this App inorder to eradicate bugs.
 
 The modules covered are
 
@@ -77,6 +77,25 @@ python manage.py cov
 
 The app is hosted live at [Feature Request App Demo](http://52.91.234.205) using AWS EC2.
 If you want a local copy, kindly follow the installation guide above.
+
+For production, I made use of MySQL as database, Nginx as webserver and gunicorn for deploying the python application(wsgi).
+
+To login
+
+```
+USER 1
+Username = admin
+Password = admin
+
+USER 2
+Username = stevejobs
+Password = 5october2011
+
+USER 3
+Username = elonmusk
+Password = 28june
+
+```
 
 
 ## Authors
