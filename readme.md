@@ -34,6 +34,8 @@ You need to have python 3.7+ running on your system.
 
 ### Installing
 
+These instructions will give you a local repository on your machine which you can then run and use. These steps assumes you have pip installed already.
+
 ```
 <!-- git clone https://github.com/emmanueljimawo/Project.git -->
 pip install -r requirements.txt
@@ -48,40 +50,34 @@ To run tests
 python manage.py test
 
 ```
-To get a full coverage of the test carried out
+
+
+### Break down into end to end tests
+
+These tests tries to cover the total functionality of this App.
+
+The modules covered are
+
+```
+project/__init__.py
+project/home/routes.py
+project/models.py 	
+project/users/routes.py
+```
+
+To get full information on the coverage of the test carried out
 
 ```
 python manage.py cov
 
 ```
 
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
 ## Deployment
 
 
-The app is hosted live at [Feature Request App Demo](http://featuredemoapp.us-west-1.elasticbeanstalk.com/) thanks to AWS Elastic Beanstalk and RDS, but if you want a local copy, continue reading.
+The app is hosted live at [Feature Request App Demo](http://52.91.234.205) using AWS EC2.
+If you want a local copy, kindly follow the installation guide above.
 
-These instructions will give you a local repository on your machine which you can then run and use. These steps assumes you have pip installed already.
-
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
 
 ## Authors
 
