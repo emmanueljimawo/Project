@@ -1,4 +1,5 @@
 from datetime import datetime
+from datetime import date
 
 from flask import render_template, url_for, flash, redirect, request, abort, Blueprint
 from flask_login import login_required, current_user
@@ -30,6 +31,7 @@ def reorder_client_priority(client_input, client_priority_input):
 @home_blueprint.route('/home', methods=['GET', 'POST'])
 @login_required
 def home():
+    error = None
     requests_all = FeatureRequest.query.filter_by(
         author=current_user).order_by('client_priority').all()
     form = FeatureRequestForm()
@@ -41,7 +43,7 @@ def home():
         db.session.commit()
         flash('Your Feature Request has been Added!', 'success')
         return redirect(url_for('home.home'))
-    return render_template('home.html', form=form, requests=requests_all, now=datetime.utcnow())
+    return render_template('home.html', error=error, form=form, requests=requests_all, now=datetime.utcnow())
 
 
 @home_blueprint.route("/request/<int:featurerequest_id>", methods=['GET', 'POST'])
@@ -86,5 +88,5 @@ def delete(featurerequest_id):
             db.session.commit()
     db.session.delete(request_detail)
     db.session.commit()
-    flash('Your post has been deleted!', 'danger')
+    flash('Your request has been deleted!', 'danger')
     return redirect(url_for('home.home'))

@@ -75,7 +75,7 @@ python manage.py cov
 ## Deployment
 
 
-The app is hosted live at [Feature Request App Demo](http://52.91.234.205) using AWS EC2.
+The app is hosted live at [Feature Request App Demo](http://52.91.234.205) using AWS EC2 Ubuntu 18.04.
 If you want a local copy, kindly follow the installation guide above.
 
 For production, I made use of MySQL as database, Nginx as webserver and gunicorn for deploying the python application(wsgi).

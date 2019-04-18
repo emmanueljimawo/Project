@@ -1,8 +1,5 @@
 *_pycache_
 .DS_Store
 *.db
-.bin
-.include
-.lib
 .coverage
 .env

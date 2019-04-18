@@ -1,7 +1,7 @@
+from datetime import date
 from flask_wtf import FlaskForm
 from wtforms import StringField, TextAreaField, IntegerField, DateField, SelectField, SubmitField
-from wtforms.validators import DataRequired, Length, NumberRange
-
+from wtforms.validators import DataRequired, Length, NumberRange, ValidationError
 
 class FeatureRequestForm(FlaskForm):
     title = StringField(
@@ -16,3 +16,7 @@ class FeatureRequestForm(FlaskForm):
     product_area = SelectField('Product Area', choices=[('Policies', 'Policies'), (
         'Billing', 'Billing'), ('Claims', 'Claims'), ('Reports', 'Reports')])
     submit = SubmitField('Add')
+
+    def validate_target_date(form, target_date):
+        if target_date.data < date.today():
+            raise ValidationError('Date should be greater than today')

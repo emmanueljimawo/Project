@@ -13,7 +13,7 @@ class FeatureRequest(db.Model):
     description = db.Column(db.Text, nullable=False)
     client = db.Column(db.String(12), nullable=False)
     client_priority = db.Column(db.Integer, nullable=False)
-    target_date = db.Column(db.DateTime, nullable=False)
+    target_date = db.Column(db.Date, nullable=False)
     product_area = db.Column(db.String(12), nullable=False)
     author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
