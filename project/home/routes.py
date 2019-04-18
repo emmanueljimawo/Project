@@ -1,5 +1,4 @@
 from datetime import datetime
-from datetime import date
 
 from flask import render_template, url_for, flash, redirect, request, abort, Blueprint
 from flask_login import login_required, current_user
@@ -69,8 +68,6 @@ def detail(featurerequest_id):
         db.session.commit()
         flash('Your Feature Request has been updated!', 'success')
         return redirect(url_for('home.home'))
-    else:
-        abort(403)
     return render_template('detail.html', form=form, request=request_detail, now=datetime.utcnow())
 
 
