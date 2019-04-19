@@ -4,7 +4,7 @@ from project import db, bcrypt #pragma: no cover
 
 class FeatureRequest(db.Model):
 
-    __tablename__ = "requests" #pragma: no cover
+    __tablename__ = "requests" 
 
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(40), nullable=False)
