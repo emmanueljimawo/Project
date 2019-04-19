@@ -118,7 +118,7 @@
       <div class="list-group" id="list-tab" role="tablist">
         {% for item in requests %}
         <script type="text/javascript">
-          $(document).ready(function(){
+          $(document).ready(function() {
             $(".{{item.id}}").mouseover(function(event) {
               $(".{{item.id}}").css('border', '1px solid red');
             });

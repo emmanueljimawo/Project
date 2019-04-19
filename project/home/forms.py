@@ -1,7 +1,8 @@
-from datetime import date
-from flask_wtf import FlaskForm
-from wtforms import StringField, TextAreaField, IntegerField, DateField, SelectField, SubmitField
-from wtforms.validators import DataRequired, Length, NumberRange, ValidationError
+from datetime import date   #pragma: no cover
+from flask_wtf import FlaskForm #pragma: no cover
+from wtforms import StringField, TextAreaField, IntegerField, DateField, SelectField, SubmitField   #pragma: no cover
+from wtforms.validators import DataRequired, Length, NumberRange, ValidationError   #pragma: no cover
+
 
 class FeatureRequestForm(FlaskForm):
     title = StringField(

@@ -1,12 +1,10 @@
-from project import db, bcrypt
+from sqlalchemy.orm import relationship #pragma: no cover
 
-from sqlalchemy import ForeignKey
-from sqlalchemy.orm import relationship
-
+from project import db, bcrypt #pragma: no cover
 
 class FeatureRequest(db.Model):
 
-    __tablename__ = "requests"
+    __tablename__ = "requests" #pragma: no cover
 
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(40), nullable=False)
@@ -17,8 +15,8 @@ class FeatureRequest(db.Model):
     product_area = db.Column(db.String(12), nullable=False)
     author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
-    def __init__(self, title, description, client,\
-     client_priority, target_date, product_area, author):
+    def __init__(self, title, description, client,
+                 client_priority, target_date, product_area, author):
         self.title = title
         self.description = description
         self.client = client

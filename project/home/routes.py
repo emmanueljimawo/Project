@@ -1,18 +1,18 @@
-from datetime import datetime
+from datetime import datetime   #pragma: no cover
 
-from flask import render_template, url_for, flash, redirect, request, abort, Blueprint
-from flask_login import login_required, current_user
+from flask import render_template, url_for, flash, redirect, request, abort, Blueprint  #pragma: no cover
+from flask_login import login_required, current_user    #pragma: no cover
 
-from project import db
-from project.models import FeatureRequest
-from project.home.forms import FeatureRequestForm
+from project import db  #pragma: no cover
+from project.models import FeatureRequest   #pragma: no cover
+from project.home.forms import FeatureRequestForm   #pragma: no cover
 
 
 # config
 home_blueprint = Blueprint(
     'home', __name__,
     template_folder='templates'
-)
+)   #pragma: no cover
 
 
 def reorder_client_priority(client_input, client_priority_input):
@@ -25,8 +25,6 @@ def reorder_client_priority(client_input, client_priority_input):
 
 
 # routes
-
-# use decorators to link the function to a url
 @home_blueprint.route('/home', methods=['GET', 'POST'])
 @login_required
 def home():
@@ -36,13 +34,17 @@ def home():
     form = FeatureRequestForm()
     if form.validate_on_submit():
         reorder_client_priority(form.client.data, form.client_priority.data)
-        request_new = FeatureRequest(title=form.title.data, description=form.description.data, client=form.client.data,
-                                     client_priority=form.client_priority.data, target_date=form.target_date.data, product_area=form.product_area.data, author=current_user.id)
+        request_new = FeatureRequest(title=form.title.data, \
+        description=form.description.data, client=form.client.data,\
+        client_priority=form.client_priority.data, \
+        target_date=form.target_date.data, product_area=form.product_area.data,\
+        author=current_user.id)
         db.session.add(request_new)
         db.session.commit()
         flash('Your Feature Request has been Added!', 'success')
         return redirect(url_for('home.home'))
-    return render_template('home.html', error=error, form=form, requests=requests_all, now=datetime.utcnow())
+    return render_template('home.html', error=error, form=form, \
+    requests=requests_all, now=datetime.utcnow())
 
 
 @home_blueprint.route("/request/<int:featurerequest_id>", methods=['GET', 'POST'])
@@ -57,7 +59,8 @@ def detail(featurerequest_id):
         form.client_priority.data = request_detail.client_priority
         form.target_date.data = request_detail.target_date
         form.product_area.data = request_detail.product_area
-    elif request.method == 'POST' and request_detail.author == current_user and form.validate_on_submit():
+    elif request.method == 'POST' and request_detail.author == current_user \
+    and form.validate_on_submit():
         reorder_client_priority(form.client.data, form.client_priority.data)
         request_detail.title = form.title.data
         request_detail.description = form.description.data

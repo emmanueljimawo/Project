@@ -1,17 +1,17 @@
-from datetime import datetime
+from datetime import datetime   #pragma: no cover
 from flask import flash, redirect, render_template, request, \
-    url_for, Blueprint
-from flask_login import login_user, login_required, logout_user
+    url_for, Blueprint  #pragma: no cover
+from flask_login import login_user, login_required, logout_user #pragma: no cover
 
-from .forms import LoginForm
-from project.models import User, bcrypt
+from .forms import LoginForm    #pragma: no cover
+from project.models import User, bcrypt #pragma: no cover
 
 
 # Config
 users_blueprint = Blueprint(
     'users', __name__,
     template_folder='templates'
-)
+)   #pragma: no cover
 
 
 # routes

@@ -5,7 +5,8 @@ from cryptography.fernet import fernet
 key = 'TluxwB3fV_GWuLkR1_BzGs1Zk90TYAuhNMZP_0q4WyM='
 
 # Oh no! The code is going over the edge! What are you going to do?
-message = b'gAAAAABcnNep3hckQL0tMMdSn3BfdeSaIqr1pdWSKVpyw1mYxoj5HTR3rsEWT7hRAbDLIv0I88pa1sMwfXjfR4SXGFNRFwlZz82q9BbBP-BadOKnW83l9YHXTaS_ZJpRA5OKmg85PRDXc92iCBXsvkHVTQHq-HVd5SryhJjpJx8Zkek4nfNwudqtea1pTot4Li5Mubvk_7Zm'
+message = b'gAAAAABcuXfAVFLkbi1HRj_SL2kcvaGzrIp-Hj0ZpDURX_RySRvumo_itr1HMf3vkieA6Fpy-pkYpTAfiIgFi6sCD7huAg84nt493bzFyWgg9S-9znzK8GX-ManTY8rddNItp2bKpFtUFlxrZSvDCXKojNv6JclP0Z1PlwJUayKbzDhuWFJGiLQikTnPWA3kfY6Sz42ftFbA'
+
 
 
 def main():
@@ -24,12 +25,12 @@ if __name__ != "__main__":
 from cryptography.fernet import Fernet
 
 key = 'TluxwB3fV_GWuLkR1_BzGs1Zk90TYAuhNMZP_0q4WyM='
-message = b'gAAAAABcnNep3hckQL0tMMdSn3BfdeSaIqr1pdWSKVpyw1mYxoj5HTR3rsEWT7hRAbDLIv0I88pa1sMwfXjfR4SXGFNRFwlZz82q9BbBP-BadOKnW83l9YHXTaS_ZJpRA5OKmg85PRDXc92iCBXsvkHVTQHq-HVd5SryhJjpJx8Zkek4nfNwudqtea1pTot4Li5Mubvk_7Zm'
+message = b'gAAAAABcuXfAVFLkbi1HRj_SL2kcvaGzrIp-Hj0ZpDURX_RySRvumo_itr1HMf3vkieA6Fpy-pkYpTAfiIgFi6sCD7huAg84nt493bzFyWgg9S-9znzK8GX-ManTY8rddNItp2bKpFtUFlxrZSvDCXKojNv6JclP0Z1PlwJUayKbzDhuWFJGiLQikTnPWA3kfY6Sz42ftFbA'
+
 
 def main():
     f = Fernet(key)
     print(f.decrypt(message))
-
 
 
 if __name__ == "__main__":
@@ -37,5 +38,5 @@ if __name__ == "__main__":
 
 '''
 Running the app from my terminal using python quiz.py, I got the output below:
-b'https://engineering-application.britecore.com/e/t28e119s2t/testImplementationEngineer'
+b'https://engineering-application.britecore.com/e/t19e119s3t/testImplementationEngineer'
 '''

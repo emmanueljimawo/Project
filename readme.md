@@ -29,7 +29,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-You need to have python 3.7+ running on your system.
+You need to have python 3.6+ running on your system.
 
 
 ### Installing
@@ -39,7 +39,7 @@ These instructions will give you a local repository on your machine which you ca
 ```
 <!-- git clone https://github.com/emmanueljimawo/Project.git -->
 pip install -r requirements.txt
-python db_create_users.py
+python db_create.py
 python manage.py runserver
 ```
 
@@ -54,12 +54,12 @@ python manage.py test
 
 ### Break down into end to end tests
 
-These tests tries to cover the total functionality of this App inorder to eradicate bugs.
+These tests tries to cover the total functionality of this App in-order to eradicate bugs.
 
 The modules covered are
 
 ```
-project/__init__.py
+project/home/forms.py
 project/home/routes.py
 project/models.py 	
 project/users/routes.py
