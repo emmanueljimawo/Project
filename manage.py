@@ -6,7 +6,7 @@ import coverage
 
 from project import app, db
 
-app.config.from_object('config.BaseConfig')
+app.config.from_object('config.ProductionConfig')
 # app.config.from_envvar('PRODUCTION_CONFIG',silent=True)
 migrate = Migrate(app, db)
 manager = Manager(app)
