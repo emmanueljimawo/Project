@@ -14,7 +14,6 @@ login_manager.login_message = False
 app.config.from_object('config.BaseConfig')
 db = SQLAlchemy(app)
 
-db.init_app(app)
 
 from project.errors.handlers import errors_blueprint
 from project.home.routes import home_blueprint

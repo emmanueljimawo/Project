@@ -1,15 +1,11 @@
 FROM python:3.7.2
 
-EXPOSE 5000
+RUN mkdir -p /home/Project
 
-WORKDIR /Project
+WORKDIR /home/Project
 
-COPY ./requirements.txt requirements.txt
+COPY requirements.txt /home/Project
 
-RUN pip install -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
-COPY . /Project
-
-ENTRYPOINT [ "python" ]
-
-CMD [ "manage.py", "runserver" ]
+COPY . /home/Project

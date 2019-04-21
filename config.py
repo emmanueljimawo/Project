@@ -1,4 +1,4 @@
-
+import mysql
 
 # Default config
 class BaseConfig(object):
@@ -10,5 +10,5 @@ class BaseConfig(object):
 # Production config
 class ProductionConfig(BaseConfig):
     DEBUG = False
-    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:test@localhost/feature_request'
+    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:test@mysql:3306/feature_request'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
