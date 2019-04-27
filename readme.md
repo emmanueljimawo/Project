@@ -80,14 +80,14 @@ If you want a local copy, kindly follow the installation guide above.
 
 For production, I made use of MySQL as database, Nginx as webserver and gunicorn for deploying the python application(wsgi).
 
-To login
-
 ## Docker Compose
 
 - Clone the app
 - Build the image with `docker-compose build`
 - Run the container with `docker-compose -d up`
 - Run app on browser on port 8000
+
+## To login
 
 ```
 USER 1
