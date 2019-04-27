@@ -1,22 +1,21 @@
-version: '3'
+version: "3"
 services:
+  webapp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    links:
+      - db:mysql
+    ports:
+      - "8000:8000"
+    command: gunicorn -w 1 -b :8000 run:app
 
-    webapp:
-        build:
-            context: .
-            dockerfile: Dockerfile
-        links:
-            - db:mysql
-        ports:
-            - "8000:8000"
-        command: gunicorn -w 1 -b :8000 manage:app
-
-    db:
-        image: mysql:8
-        ports:
-            - "32000:3306"
-        environment:
-            MYSQL_ROOT_PASSWORD: "test"
-            MYSQL_DATABASE: "feature_request"
-        volumes:
-            - ./db:/docker-entrypoint-initdb.d/:ro
+  db:
+    image: mysql:8
+    ports:
+      - "32000:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: "test"
+      MYSQL_DATABASE: "feature_request"
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d/:ro
