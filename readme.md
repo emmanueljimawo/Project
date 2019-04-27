@@ -84,10 +84,10 @@ To login
 
 ## Docker Compose
 
-Clone the app
-Build the image with `docker-compose build`
-Run the container with `docker-compose -d up`
-Run app on browser on port 8000
+- Clone the app
+- Build the image with `docker-compose build`
+- Run the container with `docker-compose -d up`
+- Run app on browser on port 8000
 
 ```
 USER 1
