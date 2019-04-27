@@ -84,7 +84,7 @@ For production, I made use of MySQL as database, Nginx as webserver and gunicorn
 
 - Clone the app
 - Build the image with `docker-compose build`
-- Run the container with `docker-compose -d up`
+- Run the container with `docker-compose up -d`
 - Run app on browser on port 8000
 
 ## To login
